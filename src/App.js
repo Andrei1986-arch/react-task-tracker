@@ -1,6 +1,7 @@
 import { useState } from "react"
 import Header from "./components/Header";
 import Tasks from "./components/Tasks";
+import AddTask from "./components/AddTask";
 const App = () => {
     const [tasks , setTasks] = useState(
         [
@@ -24,16 +25,19 @@ const App = () => {
             },
         ]
     )
-        // delete Task
+        // delete Task --> stergerea se face doar prin setTask
+        // NU prin functia DELETE petru ca folosim useState care este imutabil
+        // folosim filter --> pastram tot ce nu are id-ul selectat
     const deleteTask = (id) => {
       setTasks(tasks.filter((task) => task.id !== id))
   }
 
     // Toggle reminder
-
+    //NU INTELEG
+    //
     const toggleReminder = (id) => {
-      setTasks(task.map((task) => task.id === id ? {
-        ...task , reminder : !task.reminder} : task
+      setTasks(tasks.map((task) => task.id === id ? 
+      {...task , reminder : !task.reminder} : task
           )
         )
     }
@@ -41,6 +45,7 @@ const App = () => {
   return (
     <div className='container'>
    <Header />
+   <AddTask />
    {tasks.length > 0 ? (<Tasks tasks={tasks}  onDelete={deleteTask}
     onToggle={toggleReminder} />) : ("No Tasks to do :)")}
     </div>
