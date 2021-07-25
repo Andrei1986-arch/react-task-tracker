@@ -2,9 +2,10 @@ import {FaTimes} from "react-icons/fa"
 
 const Task = ({task , onDelete , onToggle}) => {
     return (
-        // head of the div --> influnetam clasa sa devina stilizata cu clasa reminder sau sa ramana fara clasa
+        // head of the div --> influnetam clasa sa devina stilizata 
+        //cu clasa reminder sau sa ramana fara clasa
         // asta se face 
-        <div className = {`task ${task.reminder ? "reminder"  : ""}`}  
+        <div    className = {`task ${task.reminder ? "reminder"  : ""}`}  
                 onDoubleClick={() => onToggle(task.id)}>
             <h3>
                 {task.text} 
